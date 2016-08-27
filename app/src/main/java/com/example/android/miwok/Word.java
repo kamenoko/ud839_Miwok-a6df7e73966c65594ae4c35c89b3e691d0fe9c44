@@ -5,6 +5,7 @@ package com.example.android.miwok;
  */
 public class Word {
     private  String mMiwokTranslation, mDefaultTranslation;
+    private int resourceID;
 
     public Word(String mDefaultTranslation, String mMiwokTranslation) {
         this.mMiwokTranslation = mMiwokTranslation;
