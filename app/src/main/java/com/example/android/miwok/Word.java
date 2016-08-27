@@ -4,8 +4,9 @@ package com.example.android.miwok;
  * A simple object that takes two String objects and allows another method to call them.
  */
 public class Word {
+    private final static int NO_IMAGE_PROVIDED = -1;
     private  String mMiwokTranslation, mDefaultTranslation;
-    private int mImageResourceID;
+    private int mImageResourceID = NO_IMAGE_PROVIDED;
 
     public Word(String mDefaultTranslation, String mMiwokTranslation) {
         this.mMiwokTranslation = mMiwokTranslation;
@@ -28,5 +29,9 @@ public class Word {
 
     public int getImageResourceID() {
         return mImageResourceID;
+    }
+
+    public boolean hasImage() {
+        return mImageResourceID != NO_IMAGE_PROVIDED;
     }
 }

@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -17,6 +18,10 @@ import java.util.ArrayList;
 public class WordAdapter extends ArrayAdapter<Word> {
 
     private static final String LOG_TAG = Word.class.getSimpleName();
+
+    public WordAdapter(Context context, ArrayList<Word> word) {
+        super(context, 0, word);
+    }
 
     /**
      *
@@ -38,15 +43,18 @@ public class WordAdapter extends ArrayAdapter<Word> {
         // Grab a reference to the current Word object, then display the values from it to
         // TextViews.
         Word currentWord = getItem(position);
+        ImageView listImageView = (ImageView) listItemView.findViewById(R.id.image);
+        if (currentWord.hasImage()) {
+            listImageView.setImageResource(currentWord.getImageResourceID());
+            listImageView.setVisibility(View.VISIBLE);
+        } else {
+            listImageView.setVisibility(View.GONE);
+        }
         TextView miwokTextView = (TextView) listItemView.findViewById(R.id.miwak_text_view);
         miwokTextView.setText(currentWord.getMiwokTranslation());
         TextView defaultTextView = (TextView) listItemView.findViewById(R.id.default_text_view);
         defaultTextView.setText(currentWord.getDefaultTranslation());
 
         return listItemView;
-    }
-
-    public WordAdapter(Context context, ArrayList<Word> word) {
-        super(context, 0, word);
     }
 }
