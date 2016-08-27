@@ -1,8 +1,9 @@
 package com.example.android.miwok;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
+
 import java.util.ArrayList;
 
 public class PhrasesActivity extends AppCompatActivity {
@@ -26,7 +27,7 @@ public class PhrasesActivity extends AppCompatActivity {
         words.add(new Word("Come here.", "әnni'nem"));
 
         // Create a ListView for each word in the words ArrayList
-        WordAdapter adapter = new WordAdapter(this, words);
+        WordAdapter adapter = new WordAdapter(this, words, R.color.category_phrases);
 
         ListView listview = (ListView) findViewById(R.id.list);
         listview.setAdapter(adapter);

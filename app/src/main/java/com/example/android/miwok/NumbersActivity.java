@@ -28,7 +28,7 @@ public class NumbersActivity extends AppCompatActivity {
         words.add(new Word("ten", "na’aacha", R.drawable.number_ten));
 
         // Create a ListView for each word in the words ArrayList
-        WordAdapter adapter = new WordAdapter(this, words);
+        WordAdapter adapter = new WordAdapter(this, words, R.color.category_numbers);
 
         ListView listview = (ListView) findViewById(R.id.list);
         listview.setAdapter(adapter);
