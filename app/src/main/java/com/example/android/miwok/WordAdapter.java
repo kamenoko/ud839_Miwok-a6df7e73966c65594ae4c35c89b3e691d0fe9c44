@@ -18,7 +18,6 @@ import java.util.ArrayList;
 
 public class WordAdapter extends ArrayAdapter<Word> {
 
-    private static final String LOG_TAG = Word.class.getSimpleName();
     private int mColorResourceId;
 
     public WordAdapter(Context context, ArrayList<Word> word, int colorResourceId) {
@@ -38,7 +37,7 @@ public class WordAdapter extends ArrayAdapter<Word> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View listItemView = convertView;
-        if(listItemView == null) {
+        if (listItemView == null) {
             listItemView = LayoutInflater.from(getContext()).inflate(
                     R.layout.list_item, parent, false);
         }
@@ -46,6 +45,7 @@ public class WordAdapter extends ArrayAdapter<Word> {
         // Grab a reference to the current Word object, then display the values from it to
         // TextViews.
         Word currentWord = getItem(position);
+        View textContainer = listItemView.findViewById(R.id.text_container);
         ImageView listImageView = (ImageView) listItemView.findViewById(R.id.image);
         if (currentWord.hasImage()) {
             listImageView.setImageResource(currentWord.getImageResourceID());
@@ -58,7 +58,6 @@ public class WordAdapter extends ArrayAdapter<Word> {
         TextView defaultTextView = (TextView) listItemView.findViewById(R.id.default_text_view);
         defaultTextView.setText(currentWord.getDefaultTranslation());
 
-        View textContainer = listItemView.findViewById(R.id.text_container);
         int color = ContextCompat.getColor(getContext(), mColorResourceId);
         textContainer.setBackgroundColor(color);
         return listItemView;
